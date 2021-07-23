@@ -1,1 +1,46 @@
+using System;
+using System.Text;
+
+namespace midtern
+{
+    class Program
+    {
+        static Encoding ascii = Encoding.ASCII;
+        static void Main(string[] args)
+        {
+            /*設定數值*/
+            int open;
+            Random ctrl1 =new Random();
+            Console.WriteLine("Your random password is:");
+            int lenth = ctrl1.Next(14,21);
+            byte k;
+            byte[] byt = {};
+            string str = "";
+        
+            /*選定ascii值*/
+            for(open = 1 ; open <= lenth ; open++)
+            {
+                int choose = ctrl1.Next(20,127);
+                char choose1 = Convert.ToChar(choose);
+                k = (byte)choose1;
+                byt = BitConverter.GetBytes(k);
+                string final = ascii.GetString(byt);  
+                str += final;
+            
+            }
+
+            /*把byte[]裡的ascii解成string後印出*/
+
+            Console.WriteLine(str);
+            Console.ReadKey();
+
+
+
+
+            
+
+            
+        }
+    }
+}
 
